@@ -1,6 +1,7 @@
 import { defaultMaxListeners } from "events";
 import { question } from "readline-sync";
 import ClubCoordinator from "./ClubCoordinator";
+import { NullLiteral } from "typescript";
 
 class ClubConsole{
     clubCoordinator: ClubCoordinator;
@@ -73,6 +74,18 @@ class ClubConsole{
             console.log('already existed club name');
             return;
         }
+
+        const introInput = question('input intro for your club');
+        let intro = introInput;
+        if(!intro || !intro.length){
+            console.log('club name cannot be empty');
+            return;
+        }
+
+        if(this.clubCoordinator.register(name, intro) == true){
+            console.log("registered club: " + name + ',' + intro);
+        }
+
     }
 
     find(): void{
@@ -104,6 +117,19 @@ class ClubConsole{
     }
 
     findAll(): void{
+        if(this.clubCoordinator.hasClubs()){
+            console.log('\n>No clubs in the storage. try again');
+            return;
+        }
+
+        let clubs =[];
+
+        clubs = this.clubCoordinator.findAll();
+        console.log('\n> Found ' + clubs.length + 'clubs');
+
+        for(const club of clubs){
+            console.log('\n> list of clubs founded: ', club);
+        }
 
     }
 

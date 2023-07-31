@@ -8,6 +8,9 @@ class ClubCoordinator{
         this.clubStorage = new ClubStorage();
     }
 
+    register(name: string, intro: string): boolean{
+        return this.clubStorage.push(name, intro);
+    }
 
     exist(name: string): boolean{
         return this.clubStorage.exist(name);
@@ -19,6 +22,10 @@ class ClubCoordinator{
 
     find(name: string): TravelClub | null{
         return this.clubStorage.getClub(name);
+    }
+
+    findAll(): TravelClub[]{
+        return this.clubStorage.getAllClubs();
     }
 }
 export default ClubCoordinator;
