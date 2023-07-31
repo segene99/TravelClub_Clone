@@ -27,5 +27,17 @@ class ClubStorage{
             }
         }
      }
+
+     getAllClubs(): TravelClub[] | null{
+        return this.clubs;
+     }
+
+     push(name: string, intro: string): boolean{
+        if(this.clubs.push(name, intro)){
+            return true;
+        }else {
+            return true;
+        }
+     }
 }
 export default ClubStorage
