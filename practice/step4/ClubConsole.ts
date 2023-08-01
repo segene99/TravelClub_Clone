@@ -2,6 +2,7 @@ import { defaultMaxListeners } from "events";
 import { question } from "readline-sync";
 import ClubCoordinator from "./ClubCoordinator";
 import { NullLiteral } from "typescript";
+import TravelClub from "./TravelClub";
 
 class ClubConsole{
     clubCoordinator: ClubCoordinator;
@@ -12,25 +13,31 @@ class ClubConsole{
 
     showMenu(): void{
         let inputNumber = 0;
-        this.displayMainMenu();
-        inputNumber = this.selectMainMenu();
 
-        switch(inputNumber){
-            case 1:
-                this.register();
-                break;
-            case 2:
-                this.find();
-                break;
-            case 3:
-                this.findAll();
-                break;
-            case 0:
-                this.exitProgram();
-                return;
-            default:
-                console.log('bye');
+        while(true){
+
+            this.displayMainMenu();
+            inputNumber = this.selectMainMenu();
+    
+            switch(inputNumber){
+                case 1:
+                    this.register();
+                    break;
+                case 2:
+                    this.find();
+                    break;
+                case 3:
+                    this.findAll();
+                    break;
+                case 0:
+                    this.exitProgram();
+                    return;
+                default:
+                    console.log('bye');
+            }
+
         }
+        
 
     }
 
@@ -82,8 +89,12 @@ class ClubConsole{
             return;
         }
 
-        if(this.clubCoordinator.register(name, intro) == true){
-            console.log("registered club: " + name + ',' + intro);
+        intro = intro.trim();
+
+        const newClub = new TravelClub(name, intro);
+
+        if(this.clubCoordinator.register(newClub) == true){
+            console.log("registered club: " + name + ' , ' + 'intro of club: ' + intro);
         }
 
     }
@@ -102,7 +113,13 @@ class ClubConsole{
 
             travelClub = this.clubCoordinator.find(clubName);
 
+            if(travelClub){
+                console.log('Club founded: ' + travelClub)
+            } else {
+                console.log('No such a club: ' + clubName)
+            }
         }
+        
     }
 
     findMenuandGetInput(): string{

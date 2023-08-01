@@ -1,4 +1,4 @@
-import TravelClub from "./TravelClub";
+import TravelClub from './TravelClub';
 
 class ClubStorage{
      clubs: TravelClub[];
@@ -26,17 +26,18 @@ class ClubStorage{
                 return club;
             }
         }
+        return null;
      }
 
-     getAllClubs(): TravelClub[] | null{
+     getAllClubs(): TravelClub[] {
         return this.clubs;
      }
-
-     push(name: string, intro: string): boolean{
-        if(this.clubs.push(name, intro)){
+     //
+     store(club: TravelClub): boolean{
+        if(this.clubs.push(club)){
             return true;
         }else {
-            return true;
+            return false;
         }
      }
 }

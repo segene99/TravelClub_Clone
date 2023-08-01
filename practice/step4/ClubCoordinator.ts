@@ -1,4 +1,5 @@
 import ClubStorage from './ClubStorage';
+import TravelClub from './TravelClub';
 
 class ClubCoordinator{
     
@@ -8,8 +9,9 @@ class ClubCoordinator{
         this.clubStorage = new ClubStorage();
     }
 
-    register(name: string, intro: string): boolean{
-        return this.clubStorage.push(name, intro);
+    register(newClub: TravelClub): boolean{
+        const club = this.clubStorage.store(newClub);
+        return club !== null;
     }
 
     exist(name: string): boolean{
