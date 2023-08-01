@@ -1,4 +1,4 @@
-import RoleInClub from "../entity/RoleInClub";
+import RoleInClub from "../../step1_practice1/entity/RoleInClub";
 
 class ClubMember{
 
