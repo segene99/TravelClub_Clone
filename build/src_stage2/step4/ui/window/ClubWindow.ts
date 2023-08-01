@@ -36,7 +36,7 @@ class ClubWindow {
         }
 
         try {
-          newClub = new TravelClub(clubName, intro);
+          newClub = new TravelClub({ name: clubName, intro });
           this.clubCoordinator.register(newClub);
 
           console.log('\n> Registered club --> ', newClub);

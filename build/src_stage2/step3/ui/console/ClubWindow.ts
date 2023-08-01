@@ -37,7 +37,7 @@ class ClubWindow {
         }
 
         try {
-          newClub = new TravelClub(clubName, intro);
+          newClub = new TravelClub({ name: clubName, intro });
           newClub.foundedDate = DateUtil.today();
           this.clubCoordinator.register(newClub);
 
