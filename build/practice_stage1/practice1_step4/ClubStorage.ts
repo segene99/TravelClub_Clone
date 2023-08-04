@@ -30,6 +30,7 @@ class ClubStorage{
             
         }
         return false;
+
     }
 
     hasClubs(): boolean{

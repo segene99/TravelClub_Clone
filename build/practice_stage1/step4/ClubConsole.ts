@@ -85,7 +85,7 @@ class ClubConsole{
         const introInput = question('input intro for your club');
         let intro = introInput;
         if(!intro || !intro.length){
-            console.log('club name cannot be empty');
+            console.log('intro cannot be empty');
             return;
         }
 
